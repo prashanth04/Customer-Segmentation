@@ -67,12 +67,12 @@ WITH TransactionPairs AS (
         [project 110]..[customer ] t2
     ON
         t1.CustomerID = t2.CustomerID
-        AND t1.InvoiceNo <> t2.InvoiceNo -- Ensure it's not the same transaction
+        AND t1.InvoiceNo <> t2.InvoiceNo 
     GROUP BY
         t1.StockCode,
         t2.StockCode
     HAVING
-        COUNT(*) >= 2 -- You can adjust this threshold as needed
+        COUNT(*) >= 2 
 )
 
 SELECT
@@ -83,4 +83,4 @@ FROM
     TransactionPairs
 ORDER BY
     count(*) DESC
-LIMIT 10 -- You can adjust
+LIMIT 10 
